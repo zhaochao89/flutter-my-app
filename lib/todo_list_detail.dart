@@ -27,7 +27,7 @@ class TodoListDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     //另一种取参方式
     var todo = ModalRoute.of(context)!.settings.arguments as TodoItem;
-
+    
     return WillPopScope(
       onWillPop: () => _willPop(context),
       child: Scaffold(
