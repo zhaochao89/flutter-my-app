@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:my_app/%E8%B7%AF%E7%94%B1/router_root.dart';
 import 'package:my_app/MDC103/login_page.dart';
 // import 'package:my_app/camera_page.dart';
 import 'package:my_app/english_words_page.dart';
@@ -25,6 +26,7 @@ final ThemeData kShrineTheme = buildShrineTheme();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // _cameras = await availableCameras();
+  /**
   runApp(MaterialApp(
     // showPerformanceOverlay: true,
     debugShowCheckedModeBanner: false,
@@ -32,4 +34,6 @@ Future<void> main() async {
     title: 'Shrine',
     home: const MyTabbar(),
   ));
+   */
+  runApp(const MyRouterPage());
 }
