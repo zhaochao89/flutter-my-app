@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:my_app/%E8%B7%AF%E7%94%B1/router_root.dart';
+import 'package:my_app/GetX/getx.dart';
 import 'package:my_app/MDC103/login_page.dart';
 // import 'package:my_app/camera_page.dart';
 import 'package:my_app/english_words_page.dart';
@@ -35,5 +36,5 @@ Future<void> main() async {
     home: const MyTabbar(),
   ));
    */
-  runApp(const MyRouterPage());
+  runApp(const GetXMainPage());
 }
