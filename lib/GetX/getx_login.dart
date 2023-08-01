@@ -10,8 +10,7 @@ class GetxLoginPage extends StatefulWidget {
 }
 
 class _GetxLoginPageState extends State<GetxLoginPage> {
-  //Controller这样创建，数据是全局共享的，类似单例一样，多次创建不影响之前设置的值。
-  final Controller c = Get.put(Controller());
+  final Controller _c = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +59,7 @@ class _GetxLoginPageState extends State<GetxLoginPage> {
           ),
           ElevatedButton(
               onPressed: () {
-                c.token.value = 'token';
+                _c.token.value = 'token';
                 Get.back();
               },
               child: const Text('登录')),

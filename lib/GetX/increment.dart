@@ -10,7 +10,7 @@ class InCrementPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint('=====InCrementPage build=====');
-    final Controller c = Get.put(Controller());
+    final Controller c = Get.find();
     return Scaffold(
       appBar: AppBar(
           title: Obx(

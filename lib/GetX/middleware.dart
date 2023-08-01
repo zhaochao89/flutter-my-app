@@ -7,7 +7,7 @@ class Middleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     debugPrint('====$route====');
     final Controller c = Get.find();
-    debugPrint('====${c.count}====');
+    debugPrint('====${c.token}====');
     if (c.token.isEmpty) {
       //重新定位到其他页面
       return const RouteSettings(name: '/login');
