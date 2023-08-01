@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app/GetX/get_routes.dart';
 import 'package:my_app/GetX/getx_controller.dart';
 import 'package:my_app/GetX/getx_two.dart';
 
@@ -24,7 +25,7 @@ class GetXOnePage extends StatelessWidget {
           children: [
             // 使用GetX修改状态的组件需要使用Obx来创建
             Obx(() => Text(
-                  '$_count',
+                  '当前页面修改的值：$_count',
                   style: const TextStyle(fontSize: 20),
                 )),
             const SizedBox(
@@ -38,17 +39,18 @@ class GetXOnePage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(GetXTwoPage());
+                  Get.back();
                 },
-                child: const Text('下一页')),
+                child: const Text('上一页(Get.back)')),
             const SizedBox(
               height: 20,
             ),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(GetXTwoPage(), arguments: '这是PageOne带来的参数');
+                  Get.to(GetXTwoPage(),
+                      arguments: {'content': '这是pageOne toNamed带的参数'});
                 },
-                child: const Text('下一页带参数')),
+                child: const Text('下一页(Get.to)带参数')),
             const SizedBox(
               height: 20,
             ),
@@ -58,6 +60,24 @@ class GetXOnePage extends StatelessWidget {
                   Get.toNamed('/two?device=phone&name=zhao');
                 },
                 child: const Text('下一页动态网页链接传参')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(GetRoutes.twoPage);
+                },
+                child: const Text('下一页(Get.toNamed)')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Get.toNamed(GetRoutes.twoPage,
+                      arguments: {'content': '这是pageOne toNamed带的参数'},
+                      parameters: {'device': 'phone', 'name': 'zhao'});
+                },
+                child: const Text('下一页(Get.toNamed)带参数')),
           ],
         ),
       ),

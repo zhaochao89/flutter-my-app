@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app/GetX/getx_controller.dart';
 
 class GetxLoginPage extends StatefulWidget {
   const GetxLoginPage({super.key});
@@ -9,6 +10,9 @@ class GetxLoginPage extends StatefulWidget {
 }
 
 class _GetxLoginPageState extends State<GetxLoginPage> {
+  //Controller这样创建，数据是全局共享的，类似单例一样，多次创建不影响之前设置的值。
+  final Controller c = Get.put(Controller());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +28,10 @@ class _GetxLoginPageState extends State<GetxLoginPage> {
               icon: const Icon(Icons.close)),
         ],
       ),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
@@ -39,7 +43,7 @@ class _GetxLoginPageState extends State<GetxLoginPage> {
                   )),
             ],
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
@@ -50,7 +54,16 @@ class _GetxLoginPageState extends State<GetxLoginPage> {
                         icon: Icon(Icons.password), hintText: '密码'),
                   ))
             ],
-          )
+          ),
+          const SizedBox(
+            height: 32,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                c.token.value = 'token';
+                Get.back();
+              },
+              child: const Text('登录')),
         ],
       ),
     );

@@ -27,7 +27,7 @@ class InCrementPage extends StatelessWidget {
                   //使用Getx管理路由时，需要将MaterialAp替换成GetMaterialApp
                   Get.to(GetXOnePage());
                 },
-                child: const Text('下一页')),
+                child: const Text('下一页(Get.to)')),
             const SizedBox(
               height: 20,
             ),
@@ -36,15 +36,7 @@ class InCrementPage extends StatelessWidget {
                   //跳转到下一个页面时，会将上一个页面移除，不能返回上一个页面，多用于启动页和登录页面
                   Get.off(GetXTwoPage());
                 },
-                child: const Text('跳转下一个页面，下一个页面没有返回')),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.toNamed('/one');
-                },
-                child: const Text('Get toNamed')),
+                child: const Text('下一页(Get.off，会移除当前页面，下一个页面不能返回)')),
             const SizedBox(
               height: 20,
             ),
@@ -52,7 +44,7 @@ class InCrementPage extends StatelessWidget {
                 onPressed: () {
                   Get.toNamed('/four');
                 },
-                child: const Text('Get toNamed not found')),
+                child: const Text('页面找不到，没有匹配的路由')),
           ],
         ),
       ),

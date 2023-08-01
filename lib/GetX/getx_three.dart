@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app/GetX/get_routes.dart';
 import 'package:my_app/GetX/getx_four.dart';
-import 'package:my_app/GetX/increment.dart';
 
 class GetXThreePage extends StatelessWidget {
   const GetXThreePage({super.key});
@@ -39,9 +39,9 @@ class GetXThreePage extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Get.offAll(const InCrementPage());
+                    Get.offAllNamed(GetRoutes.homePage);
                   },
-                  child: const Text('返回首页')),
+                  child: const Text('返回首页(offAllNamed)')),
             ],
           ),
         ),

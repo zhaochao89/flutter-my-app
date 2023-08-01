@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_app/GetX/getx_controller.dart';
+import 'package:my_app/GetX/get_routes.dart';
 import 'package:my_app/GetX/getx_three.dart';
 import 'package:my_app/GetX/increment.dart';
 
@@ -11,9 +11,7 @@ class GetXTwoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Controller这样创建，数据是全局共享的，类似单例一样，多次创建不影响之前设置的值。
-    final Controller c = Get.put(Controller());
-
+    // parameters 如果使用toNamed跳转页面并设置parameters后，再用to去跳转同一个页面，Get.parameters能获取到toNamed传递的parameters。
     final parameters = Get.parameters;
     String? device = '';
     String? name = '';
@@ -21,6 +19,13 @@ class GetXTwoPage extends StatelessWidget {
       device = parameters['device'];
       name = parameters['name'];
     }
+    // arguments
+    final arguments = Get.arguments as Map<String, String>?;
+    String? content;
+    if (arguments?.isNotEmpty == true) {
+      content = arguments?['content'];
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('GetX Two'),
@@ -29,7 +34,7 @@ class GetXTwoPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(Get.arguments ?? '-', style: const TextStyle(fontSize: 20)),
+            Text(content ?? '-', style: const TextStyle(fontSize: 20)),
             const SizedBox(
               height: 20,
             ),
@@ -41,17 +46,10 @@ class GetXTwoPage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Get.back();
+                  Get.offAll(const InCrementPage(),
+                      transition: Transition.noTransition); //设置没有动画
                 },
-                child: const Text('返回上一页')),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.offAll(const InCrementPage());
-                },
-                child: const Text('返回首页')),
+                child: const Text('返回首页(offAll)')),
             const SizedBox(
               height: 20,
             ),
@@ -60,7 +58,16 @@ class GetXTwoPage extends StatelessWidget {
                   // 进入下一个界面，并取消之前所有的路由
                   Get.offAll(const GetXThreePage());
                 },
-                child: const Text('下一页并取消之前所有路由')),
+                child: const Text('下一页(offAll)并取消之前所有路由')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  // 进入下一个界面，并取消之前所有的路由
+                  Get.offAllNamed(GetRoutes.threePage);
+                },
+                child: const Text('下一页(offAllNamed)并取消之前所有路由')),
             const SizedBox(
               height: 20,
             ),
@@ -77,19 +84,9 @@ class GetXTwoPage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  c.token.value = 'token';
-                  Get.toNamed('/three');
+                  Get.toNamed(GetRoutes.threePage);
                 },
-                child: const Text('下一页有name参数')),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  c.token.value = '';
-                  Get.toNamed('/three');
-                },
-                child: const Text('下一页无name参数')),
+                child: const Text('下一页(Get.toNamed)')),
           ],
         ),
       ),
