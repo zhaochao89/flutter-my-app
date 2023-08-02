@@ -11,6 +11,19 @@ class InCrementPage extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint('=====InCrementPage build=====');
     final Controller c = Get.find();
+
+    ever(c.count, (callback) {
+      debugPrint('=====count++每次更新都会调用=====');
+    });
+
+    once(c.count, (callback) {
+      debugPrint('=====count++更新只会调用一次=====');
+    });
+    // 当用户停止操作3秒时调用
+    debounce(c.count, time: const Duration(seconds: 3), (callback) {
+      debugPrint('=====count++停止3秒时调用=====');
+    });
+
     return Scaffold(
       appBar: AppBar(
           title: Obx(

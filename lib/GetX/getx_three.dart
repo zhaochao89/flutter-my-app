@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/GetX/get_routes.dart';
 import 'package:my_app/GetX/getx_four.dart';
+import 'package:my_app/GetX/page_three_controller.dart';
 
 class GetXThreePage extends StatelessWidget {
   const GetXThreePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final PageThreeController c = Get.put(PageThreeController('12233'));
     return WillPopScope(
       onWillPop: () async {
         Get.back(result: 'PageThress返回的');
