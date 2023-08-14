@@ -5,6 +5,8 @@ import 'package:my_app/tabbar%E8%81%94%E5%8A%A8/message.dart';
 import 'package:my_app/tabbar%E8%81%94%E5%8A%A8/news.dart';
 import 'package:my_app/tabbar%E8%81%94%E5%8A%A8/personal.dart';
 
+import '../自定义组件/custom_picker_view.dart';
+
 class MyTabbar extends StatefulWidget {
   const MyTabbar({super.key});
 
@@ -60,13 +62,29 @@ class _MyTabbarState extends State<MyTabbar> {
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
+            // Navigator.of(context).push(MaterialPageRoute(
+            //     builder: (context) {
+            //       return const AddPage();
+            //     },
+            //     fullscreenDialog: true //设置这个参数为 true，可以实现iOS present 的效果
+            //     )
+            //     );
+            showModalBottomSheet(
+                context: context,
                 builder: (context) {
-                  return const AddPage();
-                },
-                fullscreenDialog: true //设置这个参数为 true，可以实现iOS present 的效果
-                )
-                );
+                  debugPrint('===点击了===');
+                  return CustomPickerView(
+                    title: 'title',
+                    itemNames: const [
+                      'itemNames',
+                      'itemNames',
+                      'itemNames',
+                      'itemNames',
+                      'itemNames'
+                    ],
+                    confirmCallback: (count) {},
+                  );
+                });
           },
           child: const Icon(Icons.add),
         ),

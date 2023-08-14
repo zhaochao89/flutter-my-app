@@ -12,6 +12,7 @@ import 'package:my_app/widget%E7%BB%84%E4%BB%B6/custom_single_child_layout.dart'
 import 'package:my_app/widget%E7%BB%84%E4%BB%B6/list_view.dart';
 import 'MDC103/color.dart';
 import 'package:my_app/tabbar联动/tabbar.dart';
+import 'package:my_app/自定义组件/custom_picker_view.dart';
 
 ThemeData buildShrineTheme() {
   final ThemeData base = ThemeData.light();
@@ -36,5 +37,16 @@ Future<void> main() async {
     home: const MyTabbar(),
   ));
    */
-  runApp(const GetXMainPage());
+  runApp(const Home());
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: MyTabbar(),
+    );
+  }
 }
