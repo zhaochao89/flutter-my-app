@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/自定义组件/time_line_2.dart';
+import 'package:my_app/自定义组件/time_line_3.dart';
 
 class MyMessagePage extends StatefulWidget {
   const MyMessagePage({super.key});
@@ -17,7 +17,7 @@ class _MyMessagePageState extends State<MyMessagePage> {
       appBar: AppBar(
         title: const Text('消息'),
       ),
-      body: const TimeLine2(),
+      body: const TimeLine3(),
     );
   }
 }
