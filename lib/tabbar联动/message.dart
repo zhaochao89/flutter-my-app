@@ -27,7 +27,7 @@ class _MyMessagePageState extends State<MyMessagePage> {
               fit: StackFit.loose,
               children: [
                 const Positioned(
-                  top: 0,
+                  top: 12,
                   left: 16,
                   bottom: 0,
                   child: Column(
@@ -79,7 +79,7 @@ class _MyMessagePageState extends State<MyMessagePage> {
               fit: StackFit.loose,
               children: [
                 const Positioned(
-                  top: 0,
+                  top: 12,
                   left: 16,
                   bottom: 0,
                   child: Column(
