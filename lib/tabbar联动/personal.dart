@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/示例/long_scroll_view.dart';
 
 class MyPersonalPage extends StatefulWidget {
   const MyPersonalPage({super.key});
@@ -12,9 +13,8 @@ class MyPersonalPage extends StatefulWidget {
 class _MyPersonalPageState extends State<MyPersonalPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('个人中心'),),
-      body: const Center(child: Text('个人中心'),),
+    return const Scaffold(
+      body: LongScrollView(),
     );
   }
 }
